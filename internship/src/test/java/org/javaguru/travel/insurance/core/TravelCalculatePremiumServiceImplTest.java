@@ -1,15 +1,10 @@
 package org.javaguru.travel.insurance.core;
 
-import net.bytebuddy.asm.Advice;
 import org.javaguru.travel.insurance.rest.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.rest.TravelCalculatePremiumResponse;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Null;
-
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TravelCalculatePremiumServiceImplTest {
