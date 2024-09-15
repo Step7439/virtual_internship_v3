@@ -1,11 +1,10 @@
 package org.javaguru.travel.insurance.core;
 
 import org.javaguru.travel.insurance.rest.TravelCalculatePremiumRequest;
-import org.javaguru.travel.insurance.rest.TravelCalculatePremiumResponse;
 import org.junit.jupiter.api.Test;
-import java.math.BigDecimal;
 import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class TravelCalculatePremiumServiceImplTest {
 
@@ -36,14 +35,11 @@ class TravelCalculatePremiumServiceImplTest {
     }
     @Test
     public void TestBigDecimal() {
-        TravelCalculatePremiumResponse response = new TravelCalculatePremiumResponse();
-        BigDecimal bigDecimal = new BigDecimal("1500.75");
-        response.setAgreementPrice(bigDecimal);
-        BigDecimal actualDecimal = response.getAgreementPrice();
-        assertEquals(bigDecimal, actualDecimal);
 
-        response.setAgreementPrice(null);
-        assertEquals(null, response.getAgreementPrice());
+        var request = createRequestWithAllFields();
+        var response = service.calculatePremium(request);
+
+        assertNotNull(response.getAgreementPrice());
     }
     private TravelCalculatePremiumRequest createRequestWithAllFields() {
         var request = new TravelCalculatePremiumRequest();
